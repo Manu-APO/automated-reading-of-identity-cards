@@ -70,34 +70,6 @@
           ]
         }
       ]
-    },
-    {
-      "DocumentTypeId": "Scanari.IDs.Romania",
-      "Group": "Scanari",
-      "Category": "IDs",
-      "Name": "Romania",
-      "OptionalUniqueIdentifier": null,
-      "TypeField": {
-        "FieldId": "Scanari.IDs.Romania.DocumentType",
-        "FieldName": "Document Type"
-      },
-      "Fields": [
-        {
-          "FieldId": "Scanari.IDs.Romania.CNP",
-          "FieldName": "CNP",
-          "IsMultiValue": false,
-          "Type": "Text",
-          "DeriveFieldsFormat": "",
-          "Components": [],
-          "SetValues": [],
-          "Metadata": [
-            {
-              "Key": "RequiresReference",
-              "Value": "true"
-            }
-          ]
-        }
-      ]
     }
   ],
   "Groups": [
