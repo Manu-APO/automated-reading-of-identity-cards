@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p6="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p6="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>946,2012</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>824,2325.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -52,6 +52,8 @@
       <x:String>UiPath.OCR.Activities</x:String>
       <x:String>UiPath.OCR.Contracts.Activities</x:String>
       <x:String>UiPath.DocumentProcessing.Contracts</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -92,10 +94,11 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="562,1907.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="519.2,2260.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="p6:DocumentTaxonomy" Name="taxonomy" />
       <Variable x:TypeArguments="x:String" Default="[in_TransactionItem.ToString]" Name="file" />
@@ -111,74 +114,91 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="520,1720" sap2010:WorkflowViewState.IdRef="Sequence_2">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <p:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="478,106.666666666667" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomy]" />
-      <p:DigitizeDocument DegreeOfParallelism="-1" DisplayName="Digitize Document" DocumentObjectModel="[DOM]" DocumentPath="[file]" DocumentText="[strDocText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="478,302.666666666667" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
-        <p:DigitizeDocument.OCREngine>
-          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
-            <ActivityFunc.Argument>
-              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-            </ActivityFunc.Argument>
-            <p1:UiPathDocumentOCR Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="JdvGeW9ZOkz5K4KWc20YEh/6NnSoXnDk/aQFUKESnyk8KGQD0u/rirxyof5LXHIKxidNUEg7Hcs4qq0WtuBKhg==" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,22" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Image="[Image]" Language="auto" Profile="None" Scale="1" Timeout="100000" />
-          </ActivityFunc>
-        </p:DigitizeDocument.OCREngine>
-      </p:DigitizeDocument>
-      <p2:DataExtractionScope ClassificationResult="{x:Null}" DisplayName="Data Extraction Scope" DocumentObjectModel="[DOM]" DocumentPath="[file]" DocumentText="[strDocText]" DocumentTypeId="Scanari.IDs.Romania" ExtractionResult="[extractionResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="478,497.333333333333" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIcb304c91904d42ebaaf81cf83313de6d&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;Scanari.IDs.ID&quot;:{&quot;FieldMappings&quot;:{&quot;Scanari.IDs.ID.CNP&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Scanari.IDs.ID.CNP&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Scanari.IDs.ID.Nume&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Scanari.IDs.ID.Nume&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Scanari.IDs.ID.Prenume&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Scanari.IDs.ID.Prenume&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;Scanari.IDs.Romania&quot;:{&quot;FieldMappings&quot;:{&quot;Scanari.IDs.Romania.CNP&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Scanari.IDs.Romania.CNP&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UIcb304c91904d42ebaaf81cf83313de6d&quot;:&quot;0&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UIcb304c91904d42ebaaf81cf83313de6d&quot;:[]}}">
-        <p2:DataExtractionScope.Extractors>
-          <p2:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="JdvGeW9ZOkz5K4KWc20YEh/6NnSoXnDk/aQFUKESnyk8KGQD0u/rirxyof5LXHIKxidNUEg7Hcs4qq0WtuBKhg==" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="234,164.666666666667" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIcb304c91904d42ebaaf81cf83313de6d" SerializedSettings="{}{&quot;DocTypeSettings&quot;:[{&quot;DocumentTypeId&quot;:&quot;Scanari.IDs.Romania&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[&quot;Yes&quot;,&quot;X&quot;,&quot;V&quot;,&quot;✓&quot;,&quot;✔&quot;],&quot;BooleanSynonymsForNo&quot;:[&quot;No&quot;],&quot;CaseSensitiveSynonyms&quot;:false}]}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;Scanari.IDs.Romania&quot;,&quot;FormId&quot;:&quot;3b3aa709&quot;,&quot;FormName&quot;:&quot;CI&quot;,&quot;OriginalFileExtension&quot;:&quot;png&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,450.0,236.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;ROMANIA&quot;,&quot;Box&quot;:[4.0,316.0,77.0,16.0]},{&quot;Text&quot;:&quot;CARTE&quot;,&quot;Box&quot;:[30.0,173.0,28.0,6.0]},{&quot;Text&quot;:&quot;IDENTITY&quot;,&quot;Box&quot;:[26.0,352.0,36.0,9.0]},{&quot;Text&quot;:&quot;DTDENTITE&quot;,&quot;Box&quot;:[35.0,167.0,41.0001,8.0]},{&quot;Text&quot;:&quot;CARD&quot;,&quot;Box&quot;:[33.0,359.0,23.0,7.0]},{&quot;Text&quot;:&quot;CNP&quot;,&quot;Box&quot;:[47.0,163.0,15.0,8.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Scanari.IDs.Romania.CNP&quot;,&quot;Box&quot;:[45.4364,177.895,78.551,12.3217]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
-            <p2:FormExtractor.DocumentBounds>
-              <InArgument x:TypeArguments="p3:ResultsDocumentBounds">
-                <DelegateArgumentValue x:TypeArguments="p3:ResultsDocumentBounds">
-                  <DelegateInArgument x:TypeArguments="p3:ResultsDocumentBounds" Name="DocumentBounds" />
-                </DelegateArgumentValue>
-              </InArgument>
-            </p2:FormExtractor.DocumentBounds>
-            <p2:FormExtractor.DocumentObjectModel>
-              <InArgument x:TypeArguments="p4:Document">
-                <DelegateArgumentValue x:TypeArguments="p4:Document">
-                  <DelegateInArgument x:TypeArguments="p4:Document" Name="DocumentObjectModel" />
-                </DelegateArgumentValue>
-              </InArgument>
-            </p2:FormExtractor.DocumentObjectModel>
-            <p2:FormExtractor.DocumentPath>
-              <InArgument x:TypeArguments="x:String">
-                <DelegateArgumentValue x:TypeArguments="x:String">
-                  <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
-                </DelegateArgumentValue>
-              </InArgument>
-            </p2:FormExtractor.DocumentPath>
-            <p2:FormExtractor.DocumentText>
-              <InArgument x:TypeArguments="x:String">
-                <DelegateArgumentValue x:TypeArguments="x:String">
-                  <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
-                </DelegateArgumentValue>
-              </InArgument>
-            </p2:FormExtractor.DocumentText>
-            <p2:FormExtractor.ExtractorDocumentType>
-              <InArgument x:TypeArguments="p5:ExtractorDocumentType">
-                <DelegateArgumentValue x:TypeArguments="p5:ExtractorDocumentType">
-                  <DelegateInArgument x:TypeArguments="p5:ExtractorDocumentType" Name="ExtractorDocumentType" />
-                </DelegateArgumentValue>
-              </InArgument>
-            </p2:FormExtractor.ExtractorDocumentType>
-            <p2:FormExtractor.ExtractorResult>
-              <OutArgument x:TypeArguments="p5:ExtractorResult">
-                <DelegateArgumentReference x:TypeArguments="p5:ExtractorResult">
-                  <DelegateOutArgument x:TypeArguments="p5:ExtractorResult" Name="ExtractorResult" />
-                </DelegateArgumentReference>
-              </OutArgument>
-            </p2:FormExtractor.ExtractorResult>
-          </p2:FormExtractor>
-        </p2:DataExtractionScope.Extractors>
-      </p2:DataExtractionScope>
-      <p:PresentValidationStation AutomaticExtractionResults="[extractionResults]" DisplayName="Present Validation Station" DocumentObjectModel="[DOM]" DocumentPath="[file]" DocumentText="[strDocText]" sap:VirtualizedContainerService.HintSize="478,380.666666666667" sap2010:WorkflowViewState.IdRef="PresentValidationStation_1" ShowOnlyRelevantPageRange="False" Taxonomy="[taxonomy]" ValidatedExtractionResults="[validatedResults]" />
-      <p2:ExportExtractionResults DataSet="[datasetResults]" DisplayName="Export Extraction Results" ExtractionResult="[validatedResults]" sap:VirtualizedContainerService.HintSize="478,180.666666666667" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_1" IncludeConfidence="False" IncludeOCRConfidence="False" />
-    </Sequence>
+    <p:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="477.6,105.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomy]" />
+    <p:DigitizeDocument DegreeOfParallelism="-1" DisplayName="Digitize Document" DocumentObjectModel="[DOM]" DocumentPath="[file]" DocumentText="[strDocText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="477.6,297.6" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+      <p:DigitizeDocument.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+          <p1:UiPathDocumentOCR Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="JdvGeW9ZOkz5K4KWc20YEh/6NnSoXnDk/aQFUKESnyk8KGQD0u/rirxyof5LXHIKxidNUEg7Hcs4qq0WtuBKhg==" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,22.4" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Image="[Image]" Language="auto" Profile="None" Scale="1" Timeout="100000" />
+        </ActivityFunc>
+      </p:DigitizeDocument.OCREngine>
+    </p:DigitizeDocument>
+    <p2:DataExtractionScope ClassificationResult="{x:Null}" DisplayName="Data Extraction Scope" DocumentObjectModel="[DOM]" DocumentPath="[file]" DocumentText="[strDocText]" DocumentTypeId="Scanari.IDs.ID" ExtractionResult="[extractionResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="477.6,490.4" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIcb304c91904d42ebaaf81cf83313de6d&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;Scanari.IDs.ID&quot;:{&quot;FieldMappings&quot;:{&quot;Scanari.IDs.ID.CNP&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Scanari.IDs.ID.CNP&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Scanari.IDs.ID.Nume&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Scanari.IDs.ID.Nume&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Scanari.IDs.ID.Prenume&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Scanari.IDs.ID.Prenume&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UIcb304c91904d42ebaaf81cf83313de6d&quot;:&quot;0&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UIcb304c91904d42ebaaf81cf83313de6d&quot;:[]}}">
+      <p2:DataExtractionScope.Extractors>
+        <p2:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="JdvGeW9ZOkz5K4KWc20YEh/6NnSoXnDk/aQFUKESnyk8KGQD0u/rirxyof5LXHIKxidNUEg7Hcs4qq0WtuBKhg==" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="233.6,164" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIcb304c91904d42ebaaf81cf83313de6d" SerializedSettings="{}{&quot;DocTypeSettings&quot;:[{&quot;DocumentTypeId&quot;:&quot;Scanari.IDs.Romania&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[&quot;Yes&quot;,&quot;X&quot;,&quot;V&quot;,&quot;✓&quot;,&quot;✔&quot;],&quot;BooleanSynonymsForNo&quot;:[&quot;No&quot;],&quot;CaseSensitiveSynonyms&quot;:false}]}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;Scanari.IDs.Romania&quot;,&quot;FormId&quot;:&quot;3b3aa709&quot;,&quot;FormName&quot;:&quot;CI&quot;,&quot;OriginalFileExtension&quot;:&quot;png&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,450.0,236.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;ROMANIA&quot;,&quot;Box&quot;:[4.0,316.0,77.0,16.0]},{&quot;Text&quot;:&quot;CARTE&quot;,&quot;Box&quot;:[30.0,173.0,28.0,6.0]},{&quot;Text&quot;:&quot;IDENTITY&quot;,&quot;Box&quot;:[26.0,352.0,36.0,9.0]},{&quot;Text&quot;:&quot;DTDENTITE&quot;,&quot;Box&quot;:[35.0,167.0,41.0001,8.0]},{&quot;Text&quot;:&quot;CARD&quot;,&quot;Box&quot;:[33.0,359.0,23.0,7.0]},{&quot;Text&quot;:&quot;CNP&quot;,&quot;Box&quot;:[47.0,163.0,15.0,8.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Scanari.IDs.Romania.CNP&quot;,&quot;Box&quot;:[45.4364,177.895,78.551,12.3217]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;Scanari.IDs.ID&quot;,&quot;FormId&quot;:&quot;b7ef7bf5&quot;,&quot;FormName&quot;:&quot;RomaniaId&quot;,&quot;OriginalFileExtension&quot;:&quot;jpg&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,320.0,240.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;ROUMANIE&quot;,&quot;Box&quot;:[9.0,0.0,83.0,15.0]},{&quot;Text&quot;:&quot;ROMANA&quot;,&quot;Box&quot;:[6.0,92.0,147.0,23.0]},{&quot;Text&quot;:&quot;ROMANI&quot;,&quot;Box&quot;:[10.0,251.0,67.0,15.0]},{&quot;Text&quot;:&quot;CARTE&quot;,&quot;Box&quot;:[32.0,104.0,28.0,7.0]},{&quot;Text&quot;:&quot;CARTE&quot;,&quot;Box&quot;:[32.0,161.0,31.0,8.0]},{&quot;Text&quot;:&quot;DTIDENTITE&quot;,&quot;Box&quot;:[39.0,96.0,43.0,7.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Scanari.IDs.ID.Nume&quot;,&quot;Box&quot;:[69.4304,92.9299,101.048,11.3225]},{&quot;Field&quot;:&quot;Scanari.IDs.ID.Prenume&quot;,&quot;Box&quot;:[87.1166,93.0061,107.4847,10.7975]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[{&quot;FieldId&quot;:&quot;Scanari.IDs.ID.CNP&quot;,&quot;FieldDescriptors&quot;:[{&quot;PageIndexAtDesignTime&quot;:0,&quot;Offset&quot;:[-7.0768,7.8273,114.951,12.9522],&quot;Target&quot;:{&quot;Text&quot;:&quot;CNP&quot;,&quot;Area&quot;:[51.0,92.0,16.0,8.0]},&quot;Anchors&quot;:[]}]}]}}]" Timeout="100000">
+          <p2:FormExtractor.DocumentBounds>
+            <InArgument x:TypeArguments="p3:ResultsDocumentBounds">
+              <DelegateArgumentValue x:TypeArguments="p3:ResultsDocumentBounds">
+                <DelegateInArgument x:TypeArguments="p3:ResultsDocumentBounds" Name="DocumentBounds" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.DocumentBounds>
+          <p2:FormExtractor.DocumentObjectModel>
+            <InArgument x:TypeArguments="p4:Document">
+              <DelegateArgumentValue x:TypeArguments="p4:Document">
+                <DelegateInArgument x:TypeArguments="p4:Document" Name="DocumentObjectModel" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.DocumentObjectModel>
+          <p2:FormExtractor.DocumentPath>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.DocumentPath>
+          <p2:FormExtractor.DocumentText>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.DocumentText>
+          <p2:FormExtractor.ExtractorDocumentType>
+            <InArgument x:TypeArguments="p5:ExtractorDocumentType">
+              <DelegateArgumentValue x:TypeArguments="p5:ExtractorDocumentType">
+                <DelegateInArgument x:TypeArguments="p5:ExtractorDocumentType" Name="ExtractorDocumentType" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p2:FormExtractor.ExtractorDocumentType>
+          <p2:FormExtractor.ExtractorResult>
+            <OutArgument x:TypeArguments="p5:ExtractorResult">
+              <DelegateArgumentReference x:TypeArguments="p5:ExtractorResult">
+                <DelegateOutArgument x:TypeArguments="p5:ExtractorResult" Name="ExtractorResult" />
+              </DelegateArgumentReference>
+            </OutArgument>
+          </p2:FormExtractor.ExtractorResult>
+        </p2:FormExtractor>
+      </p2:DataExtractionScope.Extractors>
+    </p2:DataExtractionScope>
+    <p:PresentValidationStation AutomaticExtractionResults="[extractionResults]" DisplayName="Present Validation Station" DocumentObjectModel="[DOM]" DocumentPath="[file]" DocumentText="[strDocText]" sap:VirtualizedContainerService.HintSize="477.6,372" sap2010:WorkflowViewState.IdRef="PresentValidationStation_1" ShowOnlyRelevantPageRange="False" Taxonomy="[taxonomy]" ValidatedExtractionResults="[validatedResults]" />
+    <p2:ExportExtractionResults DataSet="[datasetResults]" DisplayName="Export Extraction Results" ExtractionResult="[validatedResults]" sap:VirtualizedContainerService.HintSize="477.6,176.8" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_1" IncludeConfidence="False" IncludeOCRConfidence="False" />
+    <ui:ForEach x:TypeArguments="sd1:DataTable" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="477.6,433.6" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[datasetResults.Tables]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="sd1:DataTable">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd1:DataTable" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:AppendRange DataTable="[item]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="[item.TableName]" WorkbookPath="C:\Users\VitaliCiupac\Documents\GitHub\automated-reading-of-identity-cards\Output.xlsx" />
+            <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd1:DataTable">[item]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd1:DataTable">[New DataTable]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
   </Sequence>
 </Activity>
