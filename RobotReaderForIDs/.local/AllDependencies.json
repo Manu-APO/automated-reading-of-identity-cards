@@ -7101,9 +7101,9 @@
     "restore": {
       "projectUniqueName": "RobotReaderForIDs",
       "projectName": "RobotReaderForIDs",
-      "projectPath": "C:\\Users\\Manuel\\Documents\\UiPath\\RoboticEnterpriseFramework\\.local",
+      "projectPath": "C:\\Users\\Manuel\\Documents\\UiPath\\RoboticEnterpriseFramework\\RobotReaderForIDs\\.local",
       "packagesPath": "C:\\Users\\Manuel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Manuel\\Documents\\UiPath\\RoboticEnterpriseFramework\\.local"
+      "outputPath": "C:\\Users\\Manuel\\Documents\\UiPath\\RoboticEnterpriseFramework\\RobotReaderForIDs\\.local"
     },
     "frameworks": {
       "net461": {

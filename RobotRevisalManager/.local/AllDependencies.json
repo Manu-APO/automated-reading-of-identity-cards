@@ -2952,9 +2952,9 @@
     "restore": {
       "projectUniqueName": "RobotRevisalManager",
       "projectName": "RobotRevisalManager",
-      "projectPath": "C:\\Users\\Manuel\\Documents\\UiPath\\RobotRevisalManager\\.local",
+      "projectPath": "C:\\Users\\Manuel\\Documents\\UiPath\\RoboticEnterpriseFramework\\RobotRevisalManager\\.local",
       "packagesPath": "C:\\Users\\Manuel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Manuel\\Documents\\UiPath\\RobotRevisalManager\\.local"
+      "outputPath": "C:\\Users\\Manuel\\Documents\\UiPath\\RoboticEnterpriseFramework\\RobotRevisalManager\\.local"
     },
     "frameworks": {
       "net461": {

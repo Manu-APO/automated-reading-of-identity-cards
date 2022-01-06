@@ -3,7 +3,7 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_DataTableSet" Type="OutArgument(sd:DataTable)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>889.333333333333,736.666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>889.333333333333,670</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -74,14 +74,14 @@
       <AssemblyReference>DocumentFormat.OpenXml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration Dictionary to be used throughout the project. &#xA;Settings and constants are read from the local configuration file, and assets are fetched from Orchestrator. &#xA;Asset values overwrite settings and constant values if they are defined with the same name." DisplayName="Extract Data Rows" sap:VirtualizedContainerService.HintSize="418,632" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Extract the data from the sheet that is the output of the first process ( the one the reads data from IDs with OCR )." DisplayName="Extract Data Rows" sap:VirtualizedContainerService.HintSize="418,565.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assing out_Config (initialization)" sap:VirtualizedContainerService.HintSize="376,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assing out_DataTableSet (initialization)" sap:VirtualizedContainerService.HintSize="376,62" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[out_DataTableSet]</OutArgument>
       </Assign.To>
@@ -89,7 +89,7 @@
         <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable]</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence sap2010:Annotation.AnnotationText="Read settings and constants from the configuration file and add them to the Config dictionary." DisplayName="Get local settings and constants" sap:VirtualizedContainerService.HintSize="376,326" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence sap2010:Annotation.AnnotationText="Extracts IDs data from the corresponding excel sheet and put it in IDsData variable" DisplayName="Get the IDs data" sap:VirtualizedContainerService.HintSize="376,326" sap2010:WorkflowViewState.IdRef="Sequence_1">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="IDsData" />
       </Sequence.Variables>
@@ -101,7 +101,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:ReadRange Range="{x:Null}" AddHeaders="False" DataTable="[IDsData]" DisplayName="Read range (IDs Data sheets)" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;Excel_Input_Data_Sheet&quot;).ToString]" WorkbookPath="[in_Config(&quot;Excel_Input_Data_File&quot;).ToString]" />
-      <Assign DisplayName="Set out_Config " sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign DisplayName="Set out_DataTableSet" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
           <OutArgument x:TypeArguments="sd:DataTable">[out_DataTableSet]</OutArgument>
         </Assign.To>

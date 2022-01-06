@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>889.333333333333,1148</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>889.333333333333,1131.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetAllSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -62,7 +62,7 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration Dictionary to be used throughout the project. &#xA;Settings and constants are read from the local configuration file, and assets are fetched from Orchestrator. &#xA;Asset values overwrite settings and constant values if they are defined with the same name." DisplayName="Initialize All Settings" sap:VirtualizedContainerService.HintSize="655.333333333333,1043.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration Dictionary to be used throughout the project. &#xA;Settings and constants are read from the local configuration file." DisplayName="Initialize All Settings" sap:VirtualizedContainerService.HintSize="655.333333333333,1026.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
