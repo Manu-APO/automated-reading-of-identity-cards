@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>889.333333333333,1343.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>799.333333333333,1343.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SetTransactionStatus_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -116,12 +116,8 @@
               </sap:WorkflowViewStateService.ViewState>
               <ui:AddLogFields DisplayName="Add transaction log fields (Success)" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddLogFields_4">
                 <ui:AddLogFields.Fields>
-                  <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionStatus">
-                    <Literal x:TypeArguments="x:String">Success</Literal>
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionNumber">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_TransactionNumber.ToString" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionStatus">Success</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionNumber">[io_TransactionNumber.ToString]</InArgument>
                 </ui:AddLogFields.Fields>
               </ui:AddLogFields>
               <ui:LogMessage DisplayName="Log Message (Success)" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[in_Config(&quot;LogMessage_Success&quot;).ToString]" />
@@ -190,7 +186,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">330,650.666666666667 330,680.666666666667 210,680.666666666667 210,715.6</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="If a BussinessRuleException is thrown during the process, the transaction item's status is updated as Failed (Exception Type: Business).&#xA;" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="200,181.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence sap2010:Annotation.AnnotationText="If a BussinessRuleException is thrown during the process, the transaction item's status is updated as Failed (Exception Type: Business).&#xA;" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="418,697.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -198,7 +194,7 @@
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log business exception with additional logging fields" sap:VirtualizedContainerService.HintSize="376,372.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log business exception with additional logging fields" sap:VirtualizedContainerService.HintSize="376,526.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -208,12 +204,8 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:AddLogFields DisplayName="Add transaction log fields (Business Exception)" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddLogFields_5">
                     <ui:AddLogFields.Fields>
-                      <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionStatus">
-                        <Literal x:TypeArguments="x:String">BusinessException</Literal>
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionNumber">
-                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_TransactionNumber.ToString" />
-                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionStatus">BusinessException</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionNumber">[io_TransactionNumber.ToString]</InArgument>
                     </ui:AddLogFields.Fields>
                   </ui:AddLogFields>
                   <ui:LogMessage DisplayName="Log Message (Business Exception)" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Error" Message="[in_Config(&quot;LogMessage_BusinessRuleException&quot;).ToString + in_BusinessException.Message]" />
@@ -228,6 +220,11 @@
                       </scg:List>
                     </ui:RemoveLogFields.Fields>
                   </ui:RemoveLogFields>
+                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
                 </Sequence>
               </Sequence>
               <FlowStep.Next>
