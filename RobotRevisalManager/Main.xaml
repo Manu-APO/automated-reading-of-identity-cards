@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>947.333333333333,914.666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>947.333333333333,954.666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -79,7 +79,6 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -87,7 +86,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="REVISAL MANAGER&#xA;Add employees with their data in Revisal app. The data is read from an external source.&#xA;UBB - RPA class - final project. Made by Apostol Manuel &amp; Breaban Sergiu-Georgica. &#xA;This project was made in collaboration with &quot;Future WorkForce&quot; ( fwfcompany.com ) having as supervisor and mentor Mr. Vitalie Ciupac .&#xA;" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="690.666666666667,850" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="REVISAL MANAGER&#xA;Add employees with their data in Revisal app. The data is read from an external source.&#xA;UBB - RPA class - final project. Made by Apostol Manuel. &#xA;This project was made in collaboration with &quot;Future WorkForce&quot; ( fwfcompany.com ) having as supervisor and mentor Mr. Vitalie Ciupac .&#xA;" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="690.666666666667,850" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
