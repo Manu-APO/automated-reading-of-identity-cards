@@ -600,7 +600,7 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4ce1928e-858b-4f95-bbf3-82d214fea447" InformativeScreenshot="1785c067b9f06e9e6c1644947c5b33d3" Selector="&lt;wnd app='teamnet.revisal.ui.exe' cls='HwndWrapper*' idx='*' /&gt;&lt;ctrl name='12' role='text' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4ce1928e-858b-4f95-bbf3-82d214fea447" InformativeScreenshot="42b1a296972e93a5493bebd9f420229e" Selector="&lt;wnd app='teamnet.revisal.ui.exe' cls='HwndWrapper*' idx='*' /&gt;&lt;ctrl name='16' role='text' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -609,6 +609,12 @@
                   </ui:Target.WaitForReady>
                 </ui:Target>
               </ui:Click.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:Click>
             <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on 'Salveaza'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_17" KeyModifiers="None" MouseButton="BTN_LEFT">
               <ui:Click.CursorPosition>
